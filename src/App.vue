@@ -11,7 +11,7 @@
         <b-nav-form>
           <b-form-input size="sm" class="mr-sm-3" type="text" placeholder="Search"/>
           <b-button size="sm" class="my-2 my-sm-0" v-on:click="doLoadResults" id="fetch_cloud_news">
-            <b-img fluid rounded="0"  src="/static/func.png" alt="func_logo" width="32" height="32"/> 
+            <!-- <b-img fluid rounded="0"  src="/static/func.png" alt="func_logo" width="32" height="32"/>  -->
             Func
           </b-button>
         </b-nav-form>
@@ -369,7 +369,7 @@ export default {
         this.isCloudLoaded = false;
         this.axios({
           method: 'post',
-          url: 'http://localhost:7071/api/NewsFeedConversion',
+          url: 'https://newsclouddemo.azurewebsites.net/api/NewsFeedConversion',
           data: {
             source_news_results:  this.news,
           }
