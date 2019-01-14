@@ -11,7 +11,7 @@
         <b-nav-form>
           <b-form-input size="sm" class="mr-sm-3" type="text" placeholder="Search"/>
           <b-button size="sm" class="my-2 my-sm-0" v-on:click="doLoadResults" id="fetch_cloud_news">
-            <b-img fluid rounded="0"  src="./dist/func.png" alt="func_logo" width="32" height="32"/> 
+            <b-img fluid rounded="0"  src="/static/func.png" alt="func_logo" width="32" height="32"/> 
             Func
           </b-button>
         </b-nav-form>
@@ -39,7 +39,7 @@
     <b-container v-if="isResultLoaded">
       <b-row>
           <b-col>
-            <vue-word-cloud
+            <vue-word-cloud v-if="isCloudLoaded"
               v-bind:words="word_cloud"
               :color="([, weight]) =>  '#0b3241' "
               font-family="Roboto"
@@ -355,15 +355,34 @@ export default {
   data () {
     return {
       isResultLoaded: false,
-      msg: 'NewsCloud',
+      isCloudLoaded : false,
+      msg: 'ContosoNewsCloud',
       news : default_result ,
-      word_cloud :[['romance', 19], ['horror', 3], ['fantasy', 7], ['adventure', 3], ['alexel', 25]]
+      word_cloud :[['tbd', 1]]
     }
   },
   methods: {
     doLoadResults: function (event) {
       // update word cloud
-      this.updateWordCloud();
+      const remote = true ;
+      if(remote) {
+        this.isCloudLoaded = false;
+        this.axios({
+          method: 'post',
+          url: 'http://localhost:7071/api/NewsFeedConversion',
+          data: {
+            source_news_results:  this.news,
+          }
+        }).then(response => {
+          
+          this.word_cloud = response.data;
+          this.isCloudLoaded = true;
+        })
+
+      } else {
+          this.updateWordCloud();
+      }
+      
       // make visible
       this.isResultLoaded = true;
     },

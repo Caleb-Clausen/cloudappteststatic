@@ -4,8 +4,11 @@ import App from './App.vue'
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap-vue/dist/bootstrap-vue.css"
 import VueWordCloud from 'vuewordcloud';
+import axios from 'axios';
+import VueAxios from 'vue-axios';
 
 Vue.use(BootstrapVue)
+Vue.use(VueAxios, axios);
 
 Vue.component(VueWordCloud.name, VueWordCloud);
 
