@@ -9,10 +9,10 @@
 
       <b-navbar-nav>
         <b-nav-form>
-          <b-form-input size="sm" class="mr-sm-3" type="text" placeholder="Search"/>
+          <b-form-input size="sm" class="mr-sm-3" type="text" placeholder="news about ...." v-model="search_str"/>
           <b-button size="sm" class="my-2 my-sm-0" v-on:click="doLoadResults" id="fetch_cloud_news">
             <!-- <b-img fluid rounded="0"  src="/static/func.png" alt="func_logo" width="32" height="32"/>  -->
-            Func
+            Search
           </b-button>
         </b-nav-form>
       </b-navbar-nav>
@@ -359,11 +359,37 @@ export default {
       msg: 'ContosoNewsCloud',
       news : default_result ,
       word_cloud :[['tbd', 1]]
+      //search_str : 'news about ....'
     }
   },
   methods: {
     doLoadResults: function (event) {
-      // update word cloud
+      const use_constant_results = false;
+      if (use_constant_results) {
+        this.news = JSON.parse(JSON.stringify(default_result));
+
+        this.fetchCloudData();
+      } else {
+
+        this.axios.get('https://newsclouddemo.azurewebsites.net/api/NewsSearch',
+          {
+            params: {
+              search_str: this.search_str,
+            }
+          }).then(response => {
+          
+          this.news = response.data;
+          this.fetchCloudData();
+        });
+
+      }
+        
+      // make visible
+      this.isResultLoaded = true;
+    },
+
+    fetchCloudData: function() {
+            // update word cloud
       const remote = true ;
       if(remote) {
         this.isCloudLoaded = false;
@@ -382,9 +408,6 @@ export default {
       } else {
           this.updateWordCloud();
       }
-      
-      // make visible
-      this.isResultLoaded = true;
     },
 
     updateWordCloud: function() {

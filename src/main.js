@@ -16,7 +16,7 @@ Vue.component('news-item', {
   template: '\
     <b-list-group-item class="d-flex justify-content-between align-items-center">\
       {{ title }}\
-      <button v-on:click="$emit(\'remove\');">Remove</button>\
+      <b-button v-on:click="$emit(\'remove\');">Remove</b-button>\
     </b-list-group-item>\
   ',
   props: ['title']
