@@ -29,8 +29,8 @@ export default {
       isCloudLoaded : false,
       msg: 'Contoso Coffee',
       news : default_result ,
-      word_cloud :[['tbd', 1]]
-      //search_str : 'news about ....'
+      word_cloud :[['tbd', 1]],
+      locations  : doLoadResults()
     }
   },
   methods: {
@@ -41,7 +41,7 @@ export default {
 
       } else {
 
-        this.axios.get('https://newsclouddemo.azurewebsites.net/api/NewsSearch',
+        this.axios.get('https://coffeelocationsapi.azurewebsites.net/api/locations',
           {
             params: {
               search_str: this.search_str,
@@ -87,4 +87,5 @@ li {
 a {
   color: #42b983;
 }
+
 </style>

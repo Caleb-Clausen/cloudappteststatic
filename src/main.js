@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import BootstrapVue from "bootstrap-vue"
 import App from './App.vue'
+import locations from './Locations.vue'
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap-vue/dist/bootstrap-vue.css"
 import VueWordCloud from 'vuewordcloud';
@@ -24,7 +25,6 @@ Vue.component('news-item', {
   props: ['title']
 })
 
-const locations = { template: '<div class="tab-pane active">locations tab content...</div>' }
 const blends = { template:'<div class="tab-pane active">blends tab.. </div>' }
 const art  = { template:'<div class="tab-pane active">art tab..</div>' }
 const about  = { template:'<div class="tab-pane active">about tab..</div>' }
