@@ -1,0 +1,16 @@
+.nav-pills > li > a.active {
+     background-color: #532323c7 !important; 
+    color: #ffffff !important;
+  }
+  
+  .nav-pills > li > a:hover {
+    color: #1b0c0cc7 !important;
+  }
+
+  .nav-pills > li > a {
+    color: #eca9a9c7 !important;
+  }
+  
+  .nav-link-color {
+    color: #ffffff;
+  }
