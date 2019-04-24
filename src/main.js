@@ -2,6 +2,8 @@ import Vue from 'vue'
 import BootstrapVue from "bootstrap-vue"
 import App from './App.vue'
 import locations from './Locations.vue'
+import about from './About.vue'
+import stock from './Stock.vue'
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap-vue/dist/bootstrap-vue.css"
 import VueWordCloud from 'vuewordcloud';
@@ -27,7 +29,6 @@ Vue.component('news-item', {
 
 const blends = { template:'<div class="tab-pane active">blends tab.. </div>' }
 const art  = { template:'<div class="tab-pane active">art tab..</div>' }
-const about  = { template:'<div class="tab-pane active">about tab..</div>' }
 const menu  = { template:'<div class="tab-pane active">\
   <b-img src="./static/coffee_zoka_2.jpg" fluid-grow alt="Coffee life image"/>\
 </div>'}
@@ -42,6 +43,7 @@ const router = new VueRouter({
     { path: '/blends', name:'blends', component: blends },
     { path: '/art', name:'art', component: art },
     { path: '/about', name:'about', component: about },
+    { path: '/stock', name:'stock', component: stock },
   ]
 })
 

@@ -11,6 +11,7 @@
     <b-nav-item to="blends">Blends</b-nav-item>
     <b-nav-item to="art">Art</b-nav-item>
     <b-nav-item to="about">About</b-nav-item>
+    <b-nav-item to="stock">Stock[Admin Only]</b-nav-item>
   </b-nav>
     <br/>
     <b-container>
